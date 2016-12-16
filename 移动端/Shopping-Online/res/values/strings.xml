@@ -1,0 +1,8 @@
+<resources>
+
+    <string name="app_name">Trip</string>
+    <string name="homepage">主页</string>
+    <string name="friendspage">朋友</string>
+    <string name="activitypage">活动</string>
+
+</resources>
