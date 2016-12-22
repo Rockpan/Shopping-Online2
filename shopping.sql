@@ -29,6 +29,7 @@ constraint fk_userDetail_userLogin foreign key (user_detailId) references userDe
 );
 insert into userLogin (user_name,user_password,user_detailId) values('123456','123456','1');
 select * from userlogin;
+update userLogin set user_name='潘希城' where user_id =1;
 
 select user_password from userLogin where user_name='123456';
 -- 卖家详情表 --
@@ -47,6 +48,7 @@ seller_phone varchar(20),
 seller_address varchar(200)
 );
 insert into sellerdetail(store_name,seller_realName,seller_IdCard,seller_phone,seller_address)values('运动鞋店','hehe','371102199307182931','15864279602','上海');
+select * from sellerdetail;
 
 -- 卖家登录表 --
 -- 主键，登录名，登录密码，外键：卖家详情表--
@@ -58,8 +60,9 @@ seller_detailId int,
 constraint fk_sellerDetail_sellerLogin foreign key (seller_detailId) references sellerDetail (seller_detailId )
 );
 insert into sellerlogin(seller_name,seller_password)values('123456','123456');
+select * from sellerlogin;
 -- 商品表 --
--- 主键，商品名字，商品图片，原价，现价，分类，外键；卖家详情表--
+-- 主键，商品名字，价格，分类，外键；卖家详情表--
 create table product(
 product_id int auto_increment primary key,
 
@@ -72,6 +75,13 @@ product_description varchar(100) not null,
 seller_detailId int not null,
 constraint fk_product_sellerDetail foreign key (seller_detailId) references sellerDetail(seller_detailId )
 );
+select * from product;
+insert into product(product_name,product_price,product_category,product_description,seller_detailId)
+values('阿迪鞋',700,'鞋','适合穿着打篮球',2);
+insert into product(product_name,product_price,product_category,product_description,seller_detailId)
+values('美特斯邦威衣服',1700,'衣服','休闲',2);
+insert into product(product_name,product_price,product_category,product_description,seller_detailId)
+values('休闲裤',2800,'裤子','休闲',2);
 
 -- state 1代表未发货，2表示一发货--
 -- 订单表 --
@@ -93,6 +103,9 @@ constraint fk_order_product foreign key (product_id) references product(product_
 constraint fk_order_userLogin foreign key (user_id) references userLogin(user_id)
 
 );
+
+select * from orderProduct;
+
 -- 购物车--
 -- 主键,某一个商品的总数,外键: 商品表,外键:用户登录表--
 create table car(
@@ -103,6 +116,9 @@ create table car(
  constraint fk_car_product foreign key (product_id) references product(product_id),
  constraint fk_car_userLogin foreign key (user_id) references userLogin(user_id)
 );
+select * from car;
+insert into car values(3,1,2,1);
+
 -- create table managerLogin(
 -- manager_id int auto_increment primary key,
 -- manager_name varchar(10),
@@ -141,19 +157,13 @@ insert into sellerlogin(seller_name,seller_password,seller_detailId)values('3','
 insert into sellerlogin(seller_name,seller_password,seller_detailId)values('4','4',4);
 
 
-insert into product(product_name,product_image,product_pre_price,product_now_price,product_category,product_description,seller_id)
-values('阿迪鞋','2',800,700,'鞋','适合穿着打篮球',2);
-insert into product(product_name,product_image,product_pre_price,product_now_price,product_category,product_description,seller_id)
-values('美特斯邦威衣服','3',1800,1700,'衣服','休闲',2);
-insert into product(product_name,product_image,product_pre_price,product_now_price,product_category,product_description,seller_id)
-values('休闲裤','5',2800,2700,'裤子','休闲',2);
+insert into  orderProduct values(1,'120414316629',2,1,1);
+insert into  orderProduct values(2,'120414316629',1,1,1);
+insert into  orderProduct values(3,'120414216629',2,1,1);
+insert into  orderProduct values(4,'120514316629',2,2,1);
+insert into  orderProduct values(5,'120414336629',1,3,1);
+insert into  orderProduct values(6,'120414316629',2,1,1);
+insert into  orderProduct values(7,'120414316629',2,2,1);
+insert into  orderProduct values(8,'120414316629',1,3,1);
 
 
-insert into  orderProduct values(1,'120414316629',2,700,1,1);
-insert into  orderProduct values(2,'120414316629',1,700,1,1);
-insert into  orderProduct values(3,'120414216629',2,600,1,1);
-insert into  orderProduct values(4,'120514316629',2,700,4,1);
-insert into  orderProduct values(5,'120414336629',1,1700,5,1);
-insert into  orderProduct values(6,'120414316629',2,400,6,1);
-insert into  orderProduct values(7,'120414316629',2,700,7,1);
-insert into  orderProduct values(8,'120414316629',1,2700,8,1);
