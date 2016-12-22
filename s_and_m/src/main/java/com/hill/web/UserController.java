@@ -23,6 +23,7 @@ public class UserController {
 	public String justOne(@PathVariable("userId") int userId,Model model){
 		Users users=userService.getById(userId);
 		model.addAttribute("users", users);
+		System.out.println("users1------------------"+users.getUserId());
 		return "one";
 	}
 	@RequestMapping(value="/{userId}/{userName}/detail",method=RequestMethod.GET)
