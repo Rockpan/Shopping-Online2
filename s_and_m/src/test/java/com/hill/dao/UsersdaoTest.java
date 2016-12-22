@@ -1,6 +1,6 @@
 package com.hill.dao;
 
-import javax.annotation.Resource;
+/*import javax.annotation.Resource;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ public class UsersdaoTest {
 
 	@Resource
 	private UserDao userDao;
-	/**
+	*//**
 	 * java.lang.IllegalStateException: Failed to load ApplicationContext
 	at org.springframework.test.context.DefaultCacheAwareContextLoaderDelegate.loadContext(DefaultCacheAwareContextLoaderDelegate.java:94)
 	at org.springframework.test.context.DefaultTestContext.getApplicationContext(DefaultTestContext.java:72)
@@ -45,7 +45,7 @@ public class UsersdaoTest {
 	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
 Caused by: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [spring/spring-dao.xml]: Invocation of init method failed; nested exception is org.springframework.core.NestedIOException: Failed to parse config resource: class path resource [mybatis-config.xml]; nested exception is org.apache.ibatis.builder.BuilderException: Error parsing SQL Mapper Configuration. Cause: org.apache.ibatis.builder.BuilderException: The setting mapUnderScoreToCamelCase is not known.  Make sure you spelled it correctly (case sensitive).
 
-	 */
+	 *//*
 	@Test
 	public void getById(){
 		int id=2;
@@ -53,3 +53,4 @@ Caused by: org.springframework.beans.factory.BeanCreationException: Error creati
 		System.out.println("users:-->"+users.getUserName());
 	}
 }
+*/

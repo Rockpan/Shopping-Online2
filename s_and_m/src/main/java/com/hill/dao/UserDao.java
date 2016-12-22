@@ -9,4 +9,5 @@ public interface UserDao {
 	Users getUserById(int userId); 
 	
 	Users getUserByIdAndName(@Param("userId") int userId,@Param("userName") String userName);
+	
 }
