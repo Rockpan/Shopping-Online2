@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hill.dao.OrderDao">
+	<!-- 向订单表（orderProduct）中插入数据,根据购物车中提供的product_id和user_id -->
+	<insert id="insert" parameterType="Car">
+		insert into
+		orderProduct(product_id,user_id)
+		values(#{car.product_id},#{car.user_id});
+	</insert>
+</mapper>

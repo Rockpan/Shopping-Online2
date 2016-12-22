@@ -1,6 +1,10 @@
 package com.hill.serviceImp;
 
 
+import javax.annotation.Resource;
+
+import org.apache.catalina.User;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +17,8 @@ import com.hill.service.UserService;
 @Service
 public class UserServiceImp implements UserService {
 	private Logger logger=LoggerFactory.getLogger(this.getClass());
-	@Autowired
+	
+	@Resource
     private UserDao userDao;
 	
 	public Users getById(int id) {

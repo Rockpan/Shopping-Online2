@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hill.dao.CarsDao">
+
+	<!-- 潘希城 -->
+	<!-- 根据用户名称user_name查询对应的购物车信息, 包括店铺名称（store_name），商品名称（product_name）， 商品描述（product_description），商品单价（product_price）， 
+		购买数量（product_count） -->
+	<select id="getCarByName" parameterType="java.lang.String"
+		resultMap="getCars">
+		select
+		c.car_id,p.product_name,c.product_count,p.product_price,p.product_description,p.seller_detailId
+		from car c inner join product p on c.product_id=p.product_id
+		where
+		c.user_id=(select user_id from userLogin where
+		user_name=#{userName});
+	</select>
+
+	<resultMap type="com.hill.entity.Car" id="getCars">
+		<id property="id" column="car_id" />
+		<result property="name" column="product_name" />
+		<result property="description" column="product_description" />
+		<result property="price" column="product_price" />
+		<result property="count" column="product_count" />
+		<association property="store_name" column="seller_detailId"
+			select="getStoreName" />
+	</resultMap>
+
+	<select id="getStoreName" resultType="java.lang.String">
+		select store_name from
+		sellerDetail where seller_detailId=#{id}
+	</select>
+	
+	<!-- 根据购物车id（car_id）删除一条购物车信息 -->
+	<delete id="deleteById" parameterType="int">
+		delete  from car where car_id =#{id}
+	</delete>
+	
+	<!-- 根据购物车id（car_id）查询product_id和user_id -->
+	<select id="getCarById" parameterType="int" resultMap="getCarsById">
+		select car_id,product_id,user_id from car where car_id=#{id}; 
+	</select>
+	
+	<resultMap type="com.hill.entity.Car" id="getCarsById">
+		<id property="id" column="car_id" />
+		<result property="user_id" column="user_id" />
+		<result property="product_id" column="product_id" />
+	</resultMap>
+	
+</mapper>
