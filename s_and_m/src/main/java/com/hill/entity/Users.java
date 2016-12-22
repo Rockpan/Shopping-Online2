@@ -5,7 +5,7 @@ package com.hill.entity;
  *  ÊµÌåÀà 
  */
 public class Users {
-
+   
 	private int userId;
 	private String userName;
 	public int getUserId() {
@@ -21,5 +21,8 @@ public class Users {
 		this.userName = userName;
 	}
 	
-	
+
+	 
+	 
+	 
 }
