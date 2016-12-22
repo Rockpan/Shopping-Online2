@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.hill.dao.IUserRegister">
+   
+    <insert id="InserUserDetail" useGeneratedKeys="true" keyProperty="userDetail.userDetailId" keyColumn="GENERATED_KEY" >
+         insert into userdetail(user_realName,user_sex,user_IdCard,user_phone,user_address)
+         values(#{userDetail.userRealName},#{userDetail.userSex},#{userDetail.userIdCard},#{userDetail.userPhone},#{userDetail.userAddress})
+    </insert>
+    
+      <insert id="InsertUser"  parameterType="com.hill.entity.User">
+         insert into userLogin(user_name,user_password,user_detailId) values(#{userName},#{userPassword},#{userDetailId})
+       </insert>
+    </mapper>
