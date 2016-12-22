@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    <mapper namespace="com.hill.dao.IStoreRegister">
+    <insert id="InserStoreDetail" useGeneratedKeys="true" keyProperty="storeDetail.sellerDetailId" keyColumn="GENERATED_KEY" >
+         insert into sellerDetail(store_name,seller_realName,seller_IdCard,seller_phone,seller_address)
+         values(#{storeDetail.storeName},#{storeDetail.sellerRealName},#{storeDetail.sellerIdCard},#{storeDetail.sellerPhone},#{storeDetail.sellerAddress})
+    </insert>
+     <insert id="InsertStore"  parameterType="com.hill.entity.Store">
+         insert into sellerLogin(seller_name,seller_password,seller_detailId) values(#{sellerName},#{sellerPassword},#{sellerDetailId})
+       </insert>
+    </mapper>
